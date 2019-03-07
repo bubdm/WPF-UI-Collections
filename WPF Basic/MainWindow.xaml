@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Basic"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        mc:Ignorable="d" FontFamily="Lato"
+        Title="WPF Basic" Height="800" Width="400" Icon="icon.ico">
     <Border Padding="10">
         <StackPanel>
+            
+            <!-- First Line Buttons -->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -15,10 +17,118 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             
-                <Button Grid.Column="0" Content="Apply"/>
+                <Button Margin="0 0 10 0" Grid.Column="0" Content="Apply"/>
                 <Button Grid.Column="1" Content="Reset"/>
-                <Button Grid.Column="2" Content="Refresh"/>
+                <Button Margin="10 0 0 0" Grid.Column="2" Content="Refresh"/>
             </Grid>
+            
+            <!-- Pulse Properties -->
+            <TextBlock Text="Pulse Properties" FontWeight="ExtraBold" Margin="0 10"/>
+            
+            <!-- Description -->
+            <TextBlock Text="Description"/>
+            <!--padding: for inner, margin: for outside-->
+            <TextBox Padding="2"/>
+            
+            <!-- Status and Revision -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Status -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Status"/>
+                    <TextBox IsReadOnly="True" Background="#eee" Padding="2"/>
+                </StackPanel>
+                <!-- Revision -->
+                <StackPanel Grid.Column="1" >
+                    <TextBlock Text="Revision"/>
+                    <TextBox IsReadOnly="True" Background="#eee" Padding="2"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Part Number -->
+            <TextBlock Text="Part Number"/>
+            <TextBox IsReadOnly="True" Background="#eee" Padding="2"/>
+
+            <!-- Raw Material -->
+            <TextBlock Text="Raw Material" FontWeight="ExtraBold" Margin="0 10"/>
+
+            <!-- Material -->
+            <TextBlock Text="Material"/>
+            <ComboBox Padding="2"/>
+
+            <!-- Manufacturing Information -->
+            <TextBlock Text="Manufacturing Information" FontWeight="ExtraBold" Margin="0 10"/>
+
+            <!-- Work Centers -->
+            <TextBlock Text="Work Centers" Margin="0 0 0 10"/>
+
+            <!-- Check Boxes -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Column 0 -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <CheckBox Content="Weld"/>
+                    <CheckBox Content="Assembly"/>
+                    <CheckBox Content="Plasma"/>
+                    <CheckBox Content="Laser"/>
+                    <CheckBox Content="Purchase"/>
+                </StackPanel>
+                <!-- Columnn 1 -->
+                <StackPanel Grid.Column="1" >
+                    <CheckBox Content="Lathe"/>
+                    <CheckBox Content="Drill"/>
+                    <CheckBox Content="Fold"/>
+                    <CheckBox Content="Roll"/>
+                    <CheckBox Content="Saw"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Length -->
+            <TextBlock Text="Length" Margin="0 8 0 0"/>
+            <TextBox Padding="2" />
+
+            <!-- Mass -->
+            <TextBlock Text="Mass" Margin="0 8 0 0 "/>
+            <TextBox IsReadOnly="True" Background="#eee" Padding="2"/>
+
+            <!-- Finish -->
+            <TextBlock Text="Finish" Margin="0 8 0 0"/>
+            <ComboBox Padding="2" SelectedIndex="0">
+                <ComboBoxItem>Painted</ComboBoxItem>
+                <ComboBoxItem>Not Painted</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Purchase Information -->
+            <TextBlock Text="Purchase Information" Margin="0 8 0 0"/>
+            <ComboBox Padding="2" SelectedIndex="0">
+                <ComboBoxItem>Rubber</ComboBoxItem>
+                <ComboBoxItem>Not Rubber</ComboBoxItem>
+            </ComboBox>
+
+
+            <!-- Supplier Name -->
+            <TextBlock Text="Supplier Name" Margin="0 8 0 0"/>
+            <TextBox Padding="2"/>
+
+
+            <!-- Supplier Code -->
+            <TextBlock Text="Supplier Code" Margin="0 8 0 0"/>
+            <TextBox Padding="2"/>
+
+            <!-- Additional Info -->
+            <TextBlock Text="Additional Info" FontWeight="ExtraBold" Margin="0 10"/>
+
+            <!-- Note -->
+            <TextBlock Text="Note"/>
+            <TextBox Padding="2"/>
         </StackPanel>
     </Border>
 </Window>
