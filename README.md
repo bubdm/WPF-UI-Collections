@@ -2,4 +2,4 @@
 
 ### 1. First WPF UI Design
         -- WPF Basic
-<image>
+![ WPF Basic](https://github.com/redcican/WPF-UI-Collections/blob/master/WPF%20Basic/sample.png)
