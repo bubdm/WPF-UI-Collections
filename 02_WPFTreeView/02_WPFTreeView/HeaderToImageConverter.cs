@@ -16,7 +16,20 @@ namespace _02_WPFTreeView
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new object();
+            // Get the full path
+            var path = (string)value;
+            // If the path is null, ignore it
+            if (path == null)
+                return null;
+
+            // Get the name of file/folder
+            var name = MainWindow.GetFileFolderName(path);
+
+            // By default, we preassume an image
+            var image = "Image/file.png";
+
+
+            return new BitmapImage(new Uri($"pack://application:,,,/Images/{image}"));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
