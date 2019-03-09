@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,9 +43,109 @@ namespace _02_WPFTreeView
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Get every logical drive on the local machine
+            foreach (var drive in Directory.GetLogicalDrives())
+            {
+                // Create a new item for it
+                var item = new TreeViewItem()
+                {
+                    // Set the header
+                    Header = drive,
+                    // Set the full path
+                    Tag = drive
+                };
 
+                // Add a dummy item
+                item.Items.Add(null);
+
+                // Listen out for item being expanded
+                item.Expanded += Folder_Expanded;
+
+                // Add it to the main Treeview.
+                FolderView.Items.Add(item);
+            }
         }
 
-        #endregion 
+        private void Folder_Expanded(object sender, RoutedEventArgs e)
+        {
+            var item = (TreeViewItem)sender;
+
+            // If the item only contains the dummy item
+            if (item.Items.Count != 1 || item.Items[0] != null)
+                return;
+
+            // Clear dummy data
+            item.Items.Clear();
+
+            // Get the full path
+            var fullPath = (string)item.Tag;
+
+            // Create a blank list for directories
+            var directories = new List<string>();
+
+            // Try and get directories from the folder
+            // ignoring any issues doing so
+            try
+            {
+                var dirs = Directory.GetDirectories(fullPath);
+
+                if (dirs.Length > 0)
+                {
+                    directories.AddRange(dirs);
+                }
+            }
+            catch { }
+
+            // for each item...
+            directories.ForEach(directoryPath =>
+            {
+                // Create directory item
+                var subItem = new TreeViewItem()
+                {
+                    // Set header an folder name    
+                    Header = GetFileFolderName(directoryPath),
+                    // And tag as full path
+                    Tag = directoryPath
+                };
+
+                // Add dummy item so we can expand it 
+                subItem.Items.Add(null);
+
+                // Handling expanding
+                subItem.Expanded += Folder_Expanded;
+
+                // Add this item to the parent
+                item.Items.Add(subItem);
+            });
+        }
+        #endregion
+        /// <summary>
+        /// Find the file or folder from a full path
+        /// </summary>
+        /// <param name="path">the full path</param>
+        /// <returns></returns>
+        public static string GetFileFolderName(string path)
+        {
+            // C:\something\a folder
+            // C:\something\file.png
+
+            // if we have no path, return empty
+            if (string.IsNullOrEmpty(path))
+                return string.Empty;
+
+            // Make all slashes back slashes
+            var normalizedPath = path.Replace('/', '\\');
+
+            // Find the last backslash in the path
+            var lastIndex = normalizedPath.LastIndexOf('\\');
+
+            // if we don't find a backslash, return the path itself
+            if (lastIndex <= 0)
+                return path;
+            else
+                // return the name after last back slash
+                return path.Substring(lastIndex + 1);
+        }
+       
     }
 }
