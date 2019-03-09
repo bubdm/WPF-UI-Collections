@@ -35,12 +35,12 @@ namespace _02_WPFTreeView
         #endregion
 
         #region on Loaded
-
         /// <summary>
         /// when the application first opens
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Get every logical drive on the local machine
@@ -66,8 +66,13 @@ namespace _02_WPFTreeView
             }
         }
 
+        #endregion
+
+        #region Folder expanded
+
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
+            #region Initial Checks
             var item = (TreeViewItem)sender;
 
             // If the item only contains the dummy item
@@ -79,6 +84,10 @@ namespace _02_WPFTreeView
 
             // Get the full path
             var fullPath = (string)item.Tag;
+
+            #endregion
+
+            #region Get Folders
 
             // Create a blank list for directories
             var directories = new List<string>();
@@ -117,8 +126,44 @@ namespace _02_WPFTreeView
                 // Add this item to the parent
                 item.Items.Add(subItem);
             });
+            #endregion
+
+            #region Get Files
+            // Create a blank list for files
+            var files = new List<string>();
+
+            // Try and get files from the folder
+            // ignoring any issues doing so
+            try
+            {
+                var fs = Directory.GetFiles(fullPath);
+
+                if (fs.Length > 0)
+                {
+                    files.AddRange(fs);
+                }
+            }
+            catch { }
+
+            // for each file...
+            files.ForEach(filePath =>
+            {
+                // Create file item
+                var subItem = new TreeViewItem()
+                {
+                    // Set header an file name    
+                    Header = GetFileFolderName(filePath),
+                    // And tag as full path
+                    Tag = filePath
+                };
+
+                // Add this item to the parent
+                item.Items.Add(subItem);
+            });
+            #endregion
         }
         #endregion
+        #region Get file folder name
         /// <summary>
         /// Find the file or folder from a full path
         /// </summary>
@@ -146,6 +191,6 @@ namespace _02_WPFTreeView
                 // return the name after last back slash
                 return path.Substring(lastIndex + 1);
         }
-       
+        #endregion
     }
 }
