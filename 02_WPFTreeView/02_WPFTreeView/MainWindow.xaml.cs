@@ -15,14 +15,36 @@ using System.Windows.Shapes;
 
 namespace _02_WPFTreeView
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region on Loaded
+
+        /// <summary>
+        /// when the application first opens
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion 
     }
 }
