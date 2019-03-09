@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -26,10 +27,19 @@ namespace _02_WPFTreeView
             var name = MainWindow.GetFileFolderName(path);
 
             // By default, we preassume an image
-            var image = "Image/file.png";
+            var image = "Images/file.png";
 
+            // If the name is blank, we presume it's drive as we cannot have a blank file or folder name
+            if(string.IsNullOrEmpty(name))
+            {
+                image = "Images/drive.png";
+            }
+            else if(new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
+            {
+                image = "Images/folder-closed.png";
+            }
 
-            return new BitmapImage(new Uri($"pack://application:,,,/Images/{image}"));
+            return new BitmapImage(new Uri($"pack://application:,,,/{image}"));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
