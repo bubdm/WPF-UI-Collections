@@ -70,6 +70,11 @@ namespace _02_WPFTreeView
 
         #region Folder expanded
 
+        /// <summary>
+        /// when a folder is expaned, find the sub folders
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
             #region Initial Checks
@@ -163,6 +168,7 @@ namespace _02_WPFTreeView
             #endregion
         }
         #endregion
+
         #region Get file folder name
         /// <summary>
         /// Find the file or folder from a full path
