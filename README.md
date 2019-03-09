@@ -10,4 +10,6 @@ Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/mast
 
 Dives into creating a TreeView copying some of the File Explorer functionality, as well as using Value Converters to convert paths to specific images in the tree.
 
+Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/02_WPFTreeView/02_WPFTreeView/sample.PNG
+
 
