@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Directory\Data\DirectoryItem.cs" />
     <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -105,8 +106,6 @@
     <Resource Include="Images\folder-closed.png" />
     <Resource Include="Images\folder-open.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Directory\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
