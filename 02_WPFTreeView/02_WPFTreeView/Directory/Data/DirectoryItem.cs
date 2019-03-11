@@ -7,9 +7,16 @@ namespace _02_WPFTreeView
     public class DirectoryItem
     {
         /// <summary>
+        /// The type of this item
+        /// </summary>
+        public DirectoryItemType Tpye { get; set; }
+        /// <summary>
         /// The absolute path of this item
         /// </summary>
         public string FullPath { get; set; }
 
-    }
+        /// <summary>
+        /// The name of this directory item
+        /// </summary>
+        public string Name => DirectoryStructure.GetFileFolderName(this.FullPath);
 }
