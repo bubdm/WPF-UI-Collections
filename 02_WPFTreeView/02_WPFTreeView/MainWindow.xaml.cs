@@ -30,6 +30,8 @@ namespace _02_WPFTreeView
         public MainWindow()
         {
             InitializeComponent();
+
+           this.DataContext =  new DirectoryStructureViewModel();
         }
 
         #endregion

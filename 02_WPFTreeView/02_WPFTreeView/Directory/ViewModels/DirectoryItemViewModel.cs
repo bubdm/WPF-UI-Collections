@@ -81,6 +81,9 @@ namespace _02_WPFTreeView
             // Set full path and type
             this.FullPath = fullPath;
             this.Type = type;
+
+            // Set children as needed
+            this.ClearChildren();
         }
         #endregion
 
