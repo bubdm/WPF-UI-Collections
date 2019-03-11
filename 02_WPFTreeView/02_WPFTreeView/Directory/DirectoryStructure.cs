@@ -12,10 +12,60 @@ namespace _02_WPFTreeView
 
     public static class DirectoryStructure
     {
+        #region Get the logical drives
+        /// <summary>
+        /// Gets all logical drives on the computer.
+        /// </summary>
+        /// <returns></returns>
         public static List<DirectoryItem> GetLogicalDrives()
         {
             // Get every logical drive on the local machine
-            return Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Tpye = DirectoryItemType.Drive }).ToList();
+            return Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Type = DirectoryItemType.Drive }).ToList();
+        }
+        #endregion
+
+        /// <summary>
+        /// Get the diretories top-level contents(files and folders)
+        /// </summary>
+        /// <param name="fullPath">The full name of the contents</param>
+        /// <returns></returns>
+        public static List<DirectoryItem> GetDirectoryContents(string fullPath)
+        {
+            // create a empty list of directories
+            var items = new List<DirectoryItem>();
+            #region Get Folders
+
+            // Try and get directories from the folder
+            // ignoring any issues doing so
+            try
+            {
+                var dirs = Directory.GetDirectories(fullPath);
+
+                if (dirs.Length > 0)
+                {
+                    items.AddRange(dirs.Select(dir=> new DirectoryItem { FullPath = dir, Type =DirectoryItemType.Folder}));
+                }
+            }
+            catch { }
+           
+            #endregion
+
+            #region Get Files
+
+            // Try and get files from the folder
+            // ignoring any issues doing so
+            try
+            {
+                var files = Directory.GetFiles(fullPath);
+
+                if (files.Length > 0)
+                {
+                    items.AddRange(files.Select(file => new DirectoryItem { FullPath = file, Type=DirectoryItemType.File}));
+                }
+            }
+            catch { }
+            return items;
+            #endregion
         }
 
 
