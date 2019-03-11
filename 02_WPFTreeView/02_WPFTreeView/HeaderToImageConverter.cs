@@ -24,7 +24,7 @@ namespace _02_WPFTreeView
                 return null;
 
             // Get the name of file/folder
-            var name = MainWindow.GetFileFolderName(path);
+            var name = DirectoryStructure.GetFileFolderName(path);
 
             // By default, we preassume an image
             var image = "Images/file.png";
