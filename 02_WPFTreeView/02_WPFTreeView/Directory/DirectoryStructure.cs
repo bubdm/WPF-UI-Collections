@@ -1,12 +1,24 @@
 ﻿
 
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 namespace _02_WPFTreeView
 {
     /// <summary>
     /// A helper class to query information about directories
     /// </summary>
+
     public static class DirectoryStructure
     {
+        public static List<DirectoryItem> GetLogicalDrives()
+        {
+            // Get every logical drive on the local machine
+            return Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Tpye = DirectoryItemType.Drive }).ToList();
+        }
+
+
         #region Get file folder name
         /// <summary>
         /// Find the file or folder from a full path

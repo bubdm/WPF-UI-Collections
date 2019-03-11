@@ -35,36 +35,7 @@ namespace _02_WPFTreeView
         #endregion
 
         #region on Loaded
-        /// <summary>
-        /// when the application first opens
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Get every logical drive on the local machine
-            foreach (var drive in Directory.GetLogicalDrives())
-            {
-                // Create a new item for it
-                var item = new TreeViewItem()
-                {
-                    // Set the header
-                    Header = drive,
-                    // Set the full path
-                    Tag = drive
-                };
-
-                // Add a dummy item
-                item.Items.Add(null);
-
-                // Listen out for item being expanded
-                item.Expanded += Folder_Expanded;
-
-                // Add it to the main Treeview.
-                FolderView.Items.Add(item);
-            }
-        }
+    
 
         #endregion
 
