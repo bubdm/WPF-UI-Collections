@@ -1,8 +1,6 @@
-﻿
-
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
+
 
 namespace _02_WPFTreeView
 {
@@ -20,7 +18,7 @@ namespace _02_WPFTreeView
         public static List<DirectoryItem> GetLogicalDrives()
         {
             // Get every logical drive on the local machine
-            return Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Type = DirectoryItemType.Drive }).ToList();
+            return System.IO.Directory.GetLogicalDrives().Select(drive => new DirectoryItem { FullPath = drive, Type = DirectoryItemType.Drive }).ToList();
         }
         #endregion
 
@@ -39,7 +37,7 @@ namespace _02_WPFTreeView
             // ignoring any issues doing so
             try
             {
-                var dirs = Directory.GetDirectories(fullPath);
+                var dirs = System.IO.Directory.GetDirectories(fullPath);
 
                 if (dirs.Length > 0)
                 {
@@ -56,7 +54,7 @@ namespace _02_WPFTreeView
             // ignoring any issues doing so
             try
             {
-                var files = Directory.GetFiles(fullPath);
+                var files = System.IO.Directory.GetFiles(fullPath);
 
                 if (files.Length > 0)
                 {
