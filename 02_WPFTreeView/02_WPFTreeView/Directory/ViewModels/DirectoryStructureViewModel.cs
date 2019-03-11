@@ -1,5 +1,6 @@
 ﻿using _02_WPFTreeView.Directory.ViewModels;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace _02_WPFTreeView
 {
@@ -22,7 +23,12 @@ namespace _02_WPFTreeView
         /// </summary>
         public DirectoryStructureViewModel()
         {
+            //  Get the logical drives
+            var children = DirectoryStructure.GetLogicalDrives();
 
+            // Create the view model from the data
+            this.Items = new ObservableCollection<DirectoryItemViewModel>(
+                children.Select(drive => new DirectoryItemViewModel(drive.FullPath, DirectoryItemType.Drive)));
         }
         #endregion
     }
