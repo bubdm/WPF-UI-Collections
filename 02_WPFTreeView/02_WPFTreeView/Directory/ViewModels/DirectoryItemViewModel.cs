@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace _02_WPFTreeView
 {
@@ -58,6 +59,31 @@ namespace _02_WPFTreeView
 
         #endregion
 
+        #region Public commands
+        /// <summary>
+        /// The Command to expand this item
+        /// </summary>
+        public ICommand ExpandCommand { get; set; }
+
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="fullPath">full path of this item</param>
+        /// <param name="type">type of this item</param>
+        public DirectoryItemViewModel(string fullPath, DirectoryItemType type)
+        {
+            // create command
+            this.ExpandCommand = new RelayCommand(Expand);
+
+            // Set full path and type
+            this.FullPath = fullPath;
+            this.Type = type;
+        }
+        #endregion
+
         #region Helper Methods
         /// <summary>
         /// Removes all children from the list, adding a 
@@ -81,7 +107,14 @@ namespace _02_WPFTreeView
         /// </summary>
         private void Expand()
         {
-            throw new NotImplementedException();
+            // We can't expand a file
+            if (this.Type == DirectoryItemType.File)
+                return;
+
+            // Find all children
+            this.Children = new ObservableCollection<DirectoryItemViewModel>
+                (DirectoryStructure.GetDirectoryContents(this.FullPath).Select(content =>
+                new DirectoryItemViewModel(content.FullPath, content.Type)));
         }
     }
 }
