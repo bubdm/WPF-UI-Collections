@@ -2,7 +2,5 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:_03_Fasetto_World">
    
-    <!-- TODO add the fonts references-->
-    <FontFamily x:Key="LatoRegular">pack://application;,,,/Fonts/#Lato Regular</FontFamily>
-    <FontFamily x:Key="LatoThin">pack://application;,,,/Fonts/#Lato Thin</FontFamily>
+    <!-- TODO add the texts references-->
 </ResourceDictionary>
