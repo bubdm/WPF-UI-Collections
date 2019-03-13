@@ -3,4 +3,10 @@
                     xmlns:local="clr-namespace:_03_Fasetto_World">
    
     <!-- TODO add the buttons references-->
+        <ResourceDictionary.MergedDictionaries>
+            <!-- Order is very important here! -->
+            <ResourceDictionary Source="Colors.xaml"/>
+            <ResourceDictionary Source="Fonts.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
 </ResourceDictionary>
