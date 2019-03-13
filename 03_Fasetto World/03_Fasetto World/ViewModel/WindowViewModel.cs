@@ -1,5 +1,8 @@
 ﻿
+using System;
+using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 
 namespace _03_Fasetto_World
 {
@@ -67,13 +70,34 @@ namespace _03_Fasetto_World
         ///The radius of the corners of the window.
         /// </summary>
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
-        #endregion
+
         /// <summary>
         /// The height of the title bar / caption of the window
         /// </summary>
         public int TitleHeight { get; set; } = 42;
 
-        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight+ResizeBorder); } }
+        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+        #endregion
+
+        #region Command
+        /// <summary>
+        /// The command to minimize the window
+        /// </summary>
+        public ICommand MinimizeCommand { get; set; }
+        /// <summary>
+        /// The command to maximize the window
+        /// </summary>
+        public ICommand MaximizeCommand { get; set; }
+        /// <summary>
+        /// The command to close the window
+        /// </summary>
+        public ICommand CloseCommand { get; set; }
+        /// <summary>
+        /// The command to show the system menu of the window
+        /// </summary>
+        public ICommand MenuCommand { get; set; }
+        #endregion
+
         #region Constructor
         /// <summary>
         /// Default constructor
@@ -92,7 +116,41 @@ namespace _03_Fasetto_World
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
             };
+
+            // Create the commands
+            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => mWindow.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+        }
+        #endregion
+
+        #region private helper function to find the mouse position
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+
+        internal static extern bool GetCursorPos(ref Win32Point pt);
+
+        [StructLayout(LayoutKind.Sequential)]
+
+        internal struct Win32Point
+        {
+            public Int32 X;
+            public Int32 Y;
+        }
+        /// <summary>
+        /// Get the current mouse position on the screen
+        /// </summary>
+        /// <returns></returns>
+        private static Point GetMousePosition()
+        {
+            Win32Point win32Mouse = new Win32Point();
+            GetCursorPos(ref win32Mouse);
+            return new Point(win32Mouse.X, win32Mouse.Y);
+              
         }
         #endregion
     }
+
 }
