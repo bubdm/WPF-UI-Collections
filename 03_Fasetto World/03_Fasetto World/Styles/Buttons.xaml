@@ -31,4 +31,12 @@
         <Setter Property="Padding" Value="10"/>
     </Style>
     
+    <!-- Window Control Button -->
+    <Style TargetType="{x:Type Button}" x:Key="WindowControlButton" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}"/>
+
+    </Style>
 </ResourceDictionary>

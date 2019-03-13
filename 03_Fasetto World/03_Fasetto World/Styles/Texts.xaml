@@ -3,4 +3,10 @@
                     xmlns:local="clr-namespace:_03_Fasetto_World">
    
     <!-- TODO add the texts references-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="HeaderText" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 4"/>
+    </Style>
 </ResourceDictionary>

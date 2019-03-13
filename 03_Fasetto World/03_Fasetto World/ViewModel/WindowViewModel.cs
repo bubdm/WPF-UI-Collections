@@ -126,28 +126,14 @@ namespace _03_Fasetto_World
         #endregion
 
         #region private helper function to find the mouse position
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-
-        internal static extern bool GetCursorPos(ref Win32Point pt);
-
-        [StructLayout(LayoutKind.Sequential)]
-
-        internal struct Win32Point
-        {
-            public Int32 X;
-            public Int32 Y;
-        }
         /// <summary>
         /// Get the current mouse position on the screen
         /// </summary>
         /// <returns></returns>
-        private static Point GetMousePosition()
+        private  Point GetMousePosition()
         {
-            Win32Point win32Mouse = new Win32Point();
-            GetCursorPos(ref win32Mouse);
-            return new Point(win32Mouse.X, win32Mouse.Y);
+            var position = Mouse.GetPosition(mWindow);
+            return new Point(position.X+mWindow.Left, position.Y+mWindow.Top);
               
         }
         #endregion

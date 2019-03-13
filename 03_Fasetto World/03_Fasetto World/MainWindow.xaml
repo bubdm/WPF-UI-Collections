@@ -62,6 +62,18 @@
                                         <Button  Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
                                             <Image Source="Images/Logo/logo-small.png"/>
                                         </Button>
+                                        
+                                        <!-- Title -->
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Welcome friend!'}"/>
+                                        </Viewbox>
+                                        
+                                        <!-- Window buttons -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                            <Button Content="_"/>
+                                            <Button Content="[ ]"/>
+                                            <Button Content="X"/>
+                                        </StackPanel>
                                     </Grid>
                                 </Grid>
                                     
