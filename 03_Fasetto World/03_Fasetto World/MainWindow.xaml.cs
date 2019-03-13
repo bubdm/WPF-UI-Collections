@@ -23,6 +23,8 @@ namespace _03_Fasetto_World
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new WindowViewModel(this);
         }
     }
 }
