@@ -28,6 +28,15 @@ namespace _03_Fasetto_World
 
         #region public properties
 
+        /// <summary>
+        /// The smallest width of the window can go to
+        /// </summary>
+        public double WindowMinimumWidth { get; set; } = 400;
+        /// <summary>
+        /// The smallest height of the window can go to 
+        /// </summary>
+        public double WindowMinimumHeight { get; set; } = 400;
+
         /// <summary>   
         /// The size of the resize border around the window
         /// </summary>
@@ -36,6 +45,11 @@ namespace _03_Fasetto_World
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
         public Thickness ResizeBorderThickness { get {return new Thickness(ResizeBorder +  mOuterMarginSize); } }
+
+        /// <summary>
+        /// The padding of the inner content of the main window
+        /// </summary>
+        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow
