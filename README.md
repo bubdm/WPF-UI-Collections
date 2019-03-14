@@ -15,4 +15,9 @@ Converts the previous TreeView demo application from code-behind to much better 
 
 Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/02_WPFTreeView/02_WPFTreeView/sample.PNG
 
+### 3. Custom Window Chrome and Styles
+
+Create a simple Windows UI, which is fully customized Window, styled buttons, text boxes and controls.
+
+Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample.PNG
 
