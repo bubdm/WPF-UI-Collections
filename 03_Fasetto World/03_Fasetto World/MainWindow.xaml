@@ -86,7 +86,7 @@
                                     </Grid>
                                                                     
                                     <!-- Page content -->
-                                    <Border Grid.Row="2"  Padding="{Binding InnerContentPadding}">
+                                    <Border Grid.Row="1"  Padding="{Binding InnerContentPadding}">
                                         <ContentPresenter Content="{TemplateBinding Content}"/>
                                     </Border>
                                 </Grid>
