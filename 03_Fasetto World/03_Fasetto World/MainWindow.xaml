@@ -49,8 +49,6 @@
                                         
                                         <!-- Title bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}"/>
-                                        <!-- Drop shadow -->
-                                        <RowDefinition Height="Auto"/>
                                         <!-- Window Content -->                                         
                                         <RowDefinition Height="*"/>
                                         
