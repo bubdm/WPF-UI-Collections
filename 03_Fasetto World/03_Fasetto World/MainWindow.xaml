@@ -73,8 +73,10 @@
                                         </Button>
                                         
                                         <!-- Title -->
-                                        <Viewbox Grid.Column="1" Margin="0">
-                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Welcome friend!'}"/>
+                                        <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
+                                            <StackPanel>
+                                                
+                                            </StackPanel>                      
                                         </Viewbox>
                                         
                                         <!-- Window buttons -->
