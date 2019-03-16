@@ -21,3 +21,7 @@ Create a simple Windows UI, which is fully customized Window, styled buttons, te
 
 Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample.PNG
 
+<--update-->
+Add the beautiful flat style to the UI and complete the design of login form. 
+
+Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample_2.PNG
