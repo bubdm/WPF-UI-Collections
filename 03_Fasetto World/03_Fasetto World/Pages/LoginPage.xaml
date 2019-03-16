@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
-
+    
     <Grid Background="{StaticResource WordBlueBrush}">
         <Grid>
             <!-- Blue background image -->
@@ -33,17 +33,19 @@
                             <TextBlock Text="Sign up"
                                    FontSize="{StaticResource FontSizeLarge}"
                                    FontFamily="{StaticResource LatoRegular}"
-                                   Foreground="{StaticResource WordBlueBrush}"/>
+                                   Foreground="{StaticResource WordBlueBrush}"
+                                       Margin="0 0 0 10"/>
 
                             <!-- Sign up subtext -->
                             <TextBlock Text="It's about to get fun"
                                        FontSize="{StaticResource FontSizeRegular}"
-                                       Foreground="{StaticResource ForegroundDarkBrush}"/>
+                                       Foreground="{StaticResource ForegroundDarkBrush}"
+                                       Margin="0 0 0 20"/>
 
                             <!-- E-mail -->
-                            <TextBox/>
+                            <TextBox Tag="Email"/>
                             <!-- Password -->
-                            <TextBox/>
+                            <TextBox Tag="Password" Margin="0 0 0 30"/>
                             <!-- Next button -->
                             <Button Content="Next" HorizontalAlignment="Center"/>
                         </StackPanel>
