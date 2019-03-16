@@ -1,4 +1,5 @@
 ﻿
+using F_03_Fasetto_World;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -24,6 +25,11 @@ namespace _03_Fasetto_World
         /// The radius of the edges of the window.
         /// </summary>
         private  int mWindowRadius = 10;
+
+        /// <summary>
+        /// The last known dock position
+        /// </summary>
+        private WindowDockPosition mDockPosition = WindowDockPosition.Undocked;
         #endregion
 
         #region public properties
@@ -37,10 +43,12 @@ namespace _03_Fasetto_World
         /// </summary>
         public double WindowMinimumHeight { get; set; } = 400;
 
+        public bool Borderless { get { return mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked; } }
+
         /// <summary>   
-        /// The size of the resize border around the window
+        /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
         /// <summary>
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
@@ -129,11 +137,7 @@ namespace _03_Fasetto_World
             mWindow.StateChanged += (sender, e) =>
             {
                 // Fire off events for all properties that are affected by a resize
-                OnPropertyChanged(nameof(ResizeBorderThickness));
-                OnPropertyChanged(nameof(OuterMarginSize));
-                OnPropertyChanged(nameof(OuterMarginSizeThickness));
-                OnPropertyChanged(nameof(WindowRadius));
-                OnPropertyChanged(nameof(WindowCornerRadius));
+                WindowResized();
             };
 
             // Create the commands
@@ -141,6 +145,19 @@ namespace _03_Fasetto_World
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+
+            // Fix Window resize issue
+            var resizer = new WindowResizer(mWindow);
+
+            // Listen out for dock changes
+            resizer.WindowDockChanged += (dock) =>
+            {
+                // Store last position
+                mDockPosition = dock;
+
+                // Fire off resize events
+                WindowResized();
+            };
         }
         #endregion
 
@@ -154,6 +171,21 @@ namespace _03_Fasetto_World
             var position = Mouse.GetPosition(mWindow);
             return new Point(position.X+mWindow.Left, position.Y+mWindow.Top);
               
+        }
+
+        /// <summary>
+        /// If the window resizes to a special position (docked or maximized)
+        /// this will update all required property change events to set the borders and radius values
+        /// </summary>
+        private void WindowResized()
+        {
+            // Fire off events for all properties that are affected by a resize
+            OnPropertyChanged(nameof(Borderless));
+            OnPropertyChanged(nameof(ResizeBorderThickness));
+            OnPropertyChanged(nameof(OuterMarginSize));
+            OnPropertyChanged(nameof(OuterMarginSizeThickness));
+            OnPropertyChanged(nameof(WindowRadius));
+            OnPropertyChanged(nameof(WindowCornerRadius));
         }
         #endregion
     }
