@@ -49,7 +49,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Button Content="I already have an account" HorizontalAlignment="Center"/>
+                    <Button Style="{StaticResource TextButton}" Content="I already have an account" HorizontalAlignment="Center"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
