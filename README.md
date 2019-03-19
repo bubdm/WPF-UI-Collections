@@ -17,7 +17,13 @@ Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/mast
 
 ### 3. Custom Window Chrome and Styles
 
+#### 3.1 
 Create a simple Windows UI, which is fully customized Window, styled buttons, text boxes and controls.
 
 Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample.PNG
 
+#### 3.2
+<--update-->
+Add the beautiful flat style to the UI and complete the design of login form. 
+
+Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample_2.PNG
