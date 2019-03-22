@@ -72,7 +72,7 @@ namespace _03_Fasetto_World
                 case PageAnimation.SlideAndFadeInFromRight:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    await this.SlideAndFadeInFromRight(this.SlideSeconds*3);
                     break;
            
             }
@@ -91,7 +91,7 @@ namespace _03_Fasetto_World
                 case PageAnimation.SlideAndFadeOutToLeft:
 
                     // Start the animation
-                    await this.SlideAndFadeOutToLeft(this.SlideSeconds);
+                    await this.SlideAndFadeOutToLeft(this.SlideSeconds*5);
                     break;
 
             }
