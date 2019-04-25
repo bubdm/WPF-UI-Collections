@@ -27,3 +27,9 @@ Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/mast
 Add the beautiful flat style to the UI and complete the design of login form. 
 
 Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Images/sample_2.PNG
+
+##### 3.3
+<--update-->
+Add the fade in and out animation to the login form. 
+
+Check the sample gif: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Activation%20function.gif
