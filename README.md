@@ -33,3 +33,9 @@ Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/mast
 Add the fade in and out animation to the login form. 
 
 Check the sample gif: https://github.com/redcican/WPF-UI-Collections/blob/master/03_Fasetto%20World/03_Fasetto%20World/Activation%20function.gif
+
+### 4. WPF Modern UI Design
+
+Create a modern flat UI using Material Design.
+
+Check the sample image: https://github.com/redcican/WPF-UI-Collections/blob/master/Dashboard/snipping.PNG
